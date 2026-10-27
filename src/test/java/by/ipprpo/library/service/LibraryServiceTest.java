@@ -58,10 +58,10 @@ public class LibraryServiceTest {
     }
 
  
+ 
     @Test
-    public void testAddBookWithBlankTitleThrows() {
-        Book book = new Book("   ", "Автор");
-
-        assertThrows(IllegalArgumentException.class, () -> library.addBook(book));
-    }
+public void testAddBookWithBlankAuthorThrows() {
+    Book book = new Book("Война и мир", "   "); // Пустой автор
+    assertThrows(IllegalArgumentException.class, () -> library.addBook(book));
+}
 }
