@@ -59,9 +59,10 @@ public class LibraryServiceTest {
 
  
  
+
     @Test
 public void testAddBookWithBlankAuthorThrows() {
-    Book book = new Book("Война и мир", "   "); // Пустой автор
+    Book book = new Book("Война и мир  ", "   "); // Пустой автор
     assertThrows(IllegalArgumentException.class, () -> library.addBook(book));
 }
 }
