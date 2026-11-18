@@ -54,7 +54,7 @@ public class LibraryServiceTest {
             library.issueBook("Гарри Поттер", reader2);
         });
 
-        assertFalse(exception.getMessage().contains("уже находится на руках"));
+        assertTrue(exception.getMessage().contains("уже находится на руках"));
     }
 
  
