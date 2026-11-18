@@ -26,7 +26,7 @@ public class LibraryServiceTest {
         Reader reader = new Reader("Алексей");
 
         assertDoesNotThrow(() -> library.issueBook("Чистый код", reader));
-        assertFalse(book.isIssued());
+       assertTrue(book.isIssued()); 
     }
 
     @Test
