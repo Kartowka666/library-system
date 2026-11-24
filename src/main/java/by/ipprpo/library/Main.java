@@ -17,13 +17,41 @@ public class Main {
         Reader reader1 = new Reader("Иван");
         Reader reader2 = new Reader("Петр");
 
+        // Сценарий 1 (INFO): успешная выдача
         library.issueBook("Война и мир", reader1);
 
+        // Сценарий 2 (WARN): книга уже на руках
         try {
-            System.out.println("\nПопытка выдать ту же книгу другому читателю...");
             library.issueBook("Война и мир", reader2);
-        } catch (Exception e) {
-            System.out.println("Ошибка: " + e.getMessage());
+        } catch (Exception ignored) {
+            // уже залогировано в сервисе
+        }
+
+        // Сценарий 3 (INFO): успешный возврат
+        library.returnBook("Война и мир");
+
+        // Сценарий 4 (INFO): повторная выдача после возврата
+        library.issueBook("Война и мир", reader2);
+
+        // Сценарий 5 (WARN): возврат книги, которая не выдана
+        try {
+            library.returnBook("1984");
+        } catch (Exception ignored) {
+            // уже залогировано в сервисе
+        }
+
+        // Сценарий 6 (WARN): выдача несуществующей книги
+        try {
+            library.issueBook("Несуществующая книга", reader1);
+        } catch (Exception ignored) {
+            // уже залогировано в сервисе
+        }
+
+        // Сценарий 7 (ERROR): null-читатель
+        try {
+            library.issueBook("1984", null);
+        } catch (Exception ignored) {
+            // уже залогировано в сервисе
         }
     }
 }
